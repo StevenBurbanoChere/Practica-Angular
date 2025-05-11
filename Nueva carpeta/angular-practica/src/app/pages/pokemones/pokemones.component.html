@@ -1,0 +1,11 @@
+<div class="row">
+  <pokemones-search (eventSearch)="searchPokemon($event)"/>
+</div>
+
+<pokemon-paginacion
+  (eventNewPokemons)="setNewPokemons($event)"
+></pokemon-paginacion>
+<pokemon-card [pokemonsAll]="pokemons"></pokemon-card>
+<pokemon-paginacion
+  (eventNewPokemons)="setNewPokemons($event)"
+></pokemon-paginacion>

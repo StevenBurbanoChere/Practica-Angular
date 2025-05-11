@@ -1,0 +1,14 @@
+<div class="container">
+  <app-search (search)="onSearch($event)" (refresh)="onRefresh()"></app-search>
+
+  <app-cards
+    [users]="filteredUsers"
+    (cardClick)="selectUser($event)">
+  </app-cards>
+
+  <app-card-modal
+    *ngIf="showModal"
+    [user]="selectedUser"
+    (close)="showModal = false">
+  </app-card-modal>
+</div>

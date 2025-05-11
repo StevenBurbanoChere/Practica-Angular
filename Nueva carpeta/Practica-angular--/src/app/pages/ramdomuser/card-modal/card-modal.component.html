@@ -1,0 +1,45 @@
+<div class="modal-backdrop" (click)="onClose()"></div>
+<div class="modal-content">
+  <button class="close-btn" (click)="onClose()">×</button>
+  <div class="modal-body">
+    <!-- Imagen y nombre -->
+    <div class="text-center mb-3">
+      <img [src]="user.picture.large" class="img-fluid rounded-circle mb-2" [alt]="user.name.first" style="max-width: 120px;">
+      <h5>{{ user.name.title }} {{ user.name.first }} {{ user.name.last }}</h5>
+      <p class="text-muted">{{ user.gender | titlecase }} - {{ user.nat }}</p>
+    </div>
+
+    <!-- Contacto -->
+    <p>
+      📧 Email: {{ user.email }}<br>
+      ☎️ Telf. Fijo: {{ user.phone }}<br>
+      📱 Telf. Celular: {{ user.cell }}
+    </p>
+
+    <!-- Ubicación -->
+    <p>
+      📍 Dirección: {{ user.location.street.number }} {{ user.location.street.name }}, {{ user.location.city }}, {{ user.location.state }}, {{ user.location.country }} - {{ user.location.postcode }}<br>
+      🌍 Zona horaria: {{ user.location.timezone.description }} ({{ user.location.timezone.offset }})
+    </p>
+
+    <!-- Datos de cuenta -->
+    <p>
+      👤 Usuario: {{ user.login.username }}<br>
+      🔑 Contraseña: {{ user.login.password }}<br>
+      
+    </p>
+
+    
+
+    <!-- Nacimiento y registro -->
+    <p>
+      🎂 Nacimiento: {{ user.dob.date | date:'medium' }} ({{ user.dob.age }} años)<br>
+      📅 Registro: {{ user.registered.date | date:'medium' }} ({{ user.registered.age }} años)
+    </p>
+
+    <!-- ID -->
+    <p *ngIf="user.id?.name && user.id?.value">
+      🆔 Identificador Nacional {{ user.id.name }}: {{ user.id.value }}
+    </p>
+  </div>
+</div>

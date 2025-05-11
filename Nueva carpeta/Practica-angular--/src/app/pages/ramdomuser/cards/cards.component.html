@@ -1,0 +1,7 @@
+<div class="container mt-4">
+  <app-card-modal
+    *ngIf="selectedUser"
+    [user]="selectedUser"
+    (close)="closeModal()">
+  </app-card-modal>
+</div>

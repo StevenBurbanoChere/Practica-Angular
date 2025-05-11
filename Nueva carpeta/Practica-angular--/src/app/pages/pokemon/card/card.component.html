@@ -1,0 +1,37 @@
+<div class="row mb-3 g-3">
+  <ng-container *ngIf="pokemonsAll && pokemonsAll.results && pokemonsAll.results.length > 0; else nopokemons">
+    <div class="col-3" *ngFor="let item of pokemonsAll.results">
+      <div class="card fixed-card">
+
+        <div *ngIf="!imageLoaded">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle stroke-linecap="round" fill="none" stroke-dasharray="50.26548245743669 50.26548245743669" stroke="#fe718d" stroke-width="8" r="32" cy="50" cx="50">
+            <animateTransform values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" repeatCount="indefinite" type="rotate" attributeName="transform"></animateTransform>
+          </circle><g></g></g></svg>
+        </div>
+
+        <img 
+  [src]="item?.data?.sprites?.versions?.['generation-v']?.['black-white']?.animated?.front_default" 
+  class="card-img-top fixed-img" 
+  [alt]="item?.name || 'Pokemon image'" 
+  loading="lazy"
+  (load)="imageLoaded = true"
+/>
+
+        <div class="card-body fixed-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.data?.base_experience }}</p>
+          <li class="btn btn-outline-primary"(click)="openModal(item.data!)">MAS INFORMACION</li>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #nopokemons>
+    <div class="col-12">
+      <div class="alert alert-warning" role="alert">
+        No Pokemons found
+      </div>
+    </div>
+  </ng-template>
+</div>
+<pokemon-modal />
