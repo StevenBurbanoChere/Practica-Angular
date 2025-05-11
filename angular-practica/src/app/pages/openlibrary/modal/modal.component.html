@@ -1,0 +1,39 @@
+<!-- Fondo oscuro detrás del modal -->
+<div class="modal-backdrop"></div>
+
+<!-- Contenedor principal del modal -->
+<div class="modal d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+      <!-- Encabezado del modal con título y botón de cierre -->
+      <div class="modal-header">
+        <h5 class="modal-title">{{ book.title }}</h5>
+        <button type="button" class="btn-close close-btn" aria-label="Cerrar" (click)="cerrar.emit()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="icon" style="display: block; margin: 0 auto;">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+        </button>
+
+
+        <!-- Contenido del modal -->
+        <div class="modal-body">
+          <img [src]="imgUrl" class="img-fluid mb-3" alt="Portada del libro">
+
+          <p><strong>Autor:</strong> {{ author }}</p>
+          <p><strong>Editor:</strong> {{ publisher }}</p>
+          <p><strong>Primera publicación:</strong> {{ firstPublishDate }}</p>
+          <p><strong>Clave:</strong> {{ book.key }}</p>
+
+          <!-- Botón para ver el libro en OpenLibrary -->
+          <button class="btn btn-primary" (click)="window.open('https://openlibrary.org' + book.key, '_blank')">
+            Ver en OpenLibrary
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
